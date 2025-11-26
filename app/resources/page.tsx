@@ -1,62 +1,345 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function Resources() {
-  const resources = [
+  const [activeCategory, setActiveCategory] = useState('basics')
+  const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({})
+
+  const toggleSection = (section: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }))
+  }
+
+  const categories = [
     {
-      title: 'Transfer Pricing Guide',
-      description: 'A comprehensive guide to understanding transfer pricing regulations and best practices.',
-      category: 'Guide',
+      id: 'basics',
+      name: 'Shipping Basics',
+      topics: [
+        'Understanding Shipping Methods',
+        'Packaging Best Practices',
+        'Labeling Requirements',
+        'Shipping Insurance',
+        'Tracking Packages',
+        'Handling Returns',
+      ],
+      description: 'Learn the fundamentals of shipping, from choosing the right method to packaging your products correctly.',
+      content: {
+        overview: 'Shipping basics cover everything you need to know to get started with shipping products. This includes understanding different shipping methods, proper packaging techniques, and essential labeling requirements.',
+        methods: 'Common shipping methods include Express (1-3 days), Standard (3-7 days), and Economy (7-14 days). Choose based on your customer needs and budget.',
+        packaging: 'Proper packaging protects your products during transit. Use appropriate box sizes, padding materials, and secure closures to prevent damage.',
+      },
     },
     {
-      title: 'OECD Guidelines Overview',
-      description: 'Learn about OECD transfer pricing guidelines and how they apply to your business.',
-      category: 'Documentation',
+      id: 'international',
+      name: 'International Shipping',
+      topics: [
+        'Customs Documentation',
+        'Duty & Tax Calculation',
+        'Import/Export Regulations',
+        'International Carriers',
+        'Prohibited Items',
+        'HS Code Classification',
+      ],
+      description: 'Master international shipping with guides on customs, duties, regulations, and cross-border logistics.',
+      content: {
+        overview: 'International shipping requires understanding customs procedures, duty calculations, and country-specific regulations. Proper documentation is crucial for smooth cross-border shipments.',
+        customs: 'Customs documentation typically includes commercial invoices, packing lists, and certificates of origin. Requirements vary by country and product type.',
+        duties: 'Duties and taxes are calculated based on the product value, origin country, and destination. Use HS codes to determine applicable rates.',
+      },
     },
     {
-      title: 'US Transfer Pricing Regulations',
-      description: 'Detailed information about US transfer pricing regulations and compliance requirements.',
-      category: 'Documentation',
-    },
-    {
-      title: 'Benchmark Methodology',
-      description: 'Understanding how benchmarks are calculated and what they mean for your business.',
-      category: 'Technical',
-    },
-    {
-      title: 'Case Studies',
-      description: 'Real-world examples of transfer pricing scenarios and solutions.',
-      category: 'Case Study',
-    },
-    {
-      title: 'FAQ',
-      description: 'Frequently asked questions about transfer pricing and our platform.',
-      category: 'Support',
+      id: 'optimization',
+      name: 'Cost Optimization',
+      topics: [
+        'Carrier Comparison',
+        'Rate Negotiation',
+        'Bulk Shipping Discounts',
+        'Zone Skipping',
+        'Dimensional Weight',
+        'Shipping Software',
+      ],
+      description: 'Learn strategies to reduce shipping costs and optimize your logistics operations.',
+      content: {
+        overview: 'Shipping cost optimization involves comparing carriers, negotiating rates, and implementing strategies to reduce overall logistics expenses.',
+        carriers: 'Compare rates across multiple carriers (USPS, FedEx, UPS, DHL) to find the best rates for your shipping volume and destinations.',
+        strategies: 'Strategies include negotiating volume discounts, using zone skipping for long distances, and optimizing package dimensions to avoid dimensional weight charges.',
+      },
     },
   ]
 
+  const activeCategoryData = categories.find(c => c.id === activeCategory)!
+
   return (
-    <main className="min-h-screen py-16">
+    <main className="min-h-screen py-20 bg-gradient-to-b from-primary-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Resources
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 tracking-tight">
+            Shipping <span className="text-cyan-400">Resources</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Access helpful guides, documentation, and resources to support your transfer pricing needs
+          <p className="text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-medium mb-4">
+            Comprehensive guides and resources covering all aspects of shipping and logistics
+          </p>
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full mb-6"></div>
+          <p className="text-lg text-gray-600">
+            Need help with a specific shipping topic?{' '}
+            <a href="/contact" className="text-cyan-400 hover:text-cyan-500 font-semibold underline">
+              Contact Us
+            </a>
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {resources.map((resource, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-primary-100">
-              <span className="inline-block bg-primary-100 text-primary-700 text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                {resource.category}
-              </span>
-              <h2 className="text-xl font-semibold text-gray-900 mb-3">{resource.title}</h2>
-              <p className="text-gray-600">{resource.description}</p>
-            </div>
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setActiveCategory(category.id)}
+              className={`px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 ${
+                activeCategory === category.id
+                  ? 'bg-gradient-to-r from-cyan-400 to-primary-500 text-white shadow-xl transform scale-105'
+                  : 'bg-white text-gray-700 border-2 border-cyan-200 hover:border-cyan-400 hover:shadow-lg'
+              }`}
+            >
+              {category.name}
+            </button>
           ))}
+        </div>
+
+        {/* Active Category Content */}
+        <div className="bg-white rounded-2xl shadow-xl border-2 border-cyan-100 p-10 mb-8">
+          {/* Description */}
+          <div className="mb-8">
+            <p className="text-xl text-gray-700 leading-relaxed font-medium">
+              {activeCategoryData.description}
+            </p>
+          </div>
+
+          {/* Topics */}
+          <div className="mb-8">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-6 flex items-center">
+              <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+              Topics Covered
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 ml-6">
+              {activeCategoryData.topics.map((topic, idx) => (
+                <div
+                  key={idx}
+                  className="bg-cyan-50 border border-cyan-200 rounded-lg px-4 py-3 text-gray-800 font-medium hover:bg-cyan-100 transition-colors"
+                >
+                  {topic}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Overview */}
+          <div className="mb-8">
+            <button
+              onClick={() => toggleSection('overview')}
+              className="w-full text-left flex items-center justify-between mb-4"
+            >
+              <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                Overview
+              </h2>
+              <svg
+                className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.overview ? 'rotate-180' : ''}`}
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            {expandedSections.overview && (
+              <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                  {activeCategoryData.content.overview}
+                </p>
+              </div>
+            )}
+          </div>
+
+          {/* Additional Content Sections */}
+          {activeCategoryData.content.methods && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('methods')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Shipping Methods
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.methods ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.methods && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.methods}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeCategoryData.content.packaging && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('packaging')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Packaging Guidelines
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.packaging ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.packaging && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.packaging}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeCategoryData.content.customs && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('customs')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Customs Documentation
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.customs ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.customs && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.customs}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeCategoryData.content.duties && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('duties')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Duties & Taxes
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.duties ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.duties && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.duties}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeCategoryData.content.carriers && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('carriers')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Carrier Comparison
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.carriers ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.carriers && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.carriers}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeCategoryData.content.strategies && (
+            <div className="mb-8">
+              <button
+                onClick={() => toggleSection('strategies')}
+                className="w-full text-left flex items-center justify-between mb-4"
+              >
+                <h2 className="text-3xl font-extrabold text-gray-900 flex items-center">
+                  <div className="w-2 h-10 bg-gradient-to-b from-cyan-400 to-primary-500 rounded-full mr-4"></div>
+                  Optimization Strategies
+                </h2>
+                <svg
+                  className={`w-6 h-6 text-cyan-400 transition-transform ${expandedSections.strategies ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {expandedSections.strategies && (
+                <div className="ml-6 bg-cyan-50 rounded-xl p-6 border border-cyan-200">
+                  <p className="text-lg text-gray-700 leading-relaxed font-medium">
+                    {activeCategoryData.content.strategies}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </main>
   )
 }
-

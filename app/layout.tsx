@@ -7,8 +7,8 @@ import App from '../app'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Navarro - Automate Transfer Pricing Reports',
-  description: 'Navarro helps you create your transfer pricing reports effortlessly!',
+  title: 'Navarro - Master the Art of Shipping',
+  description: 'Navarro teaches you everything about shipping and logistics! Learn shipping best practices and optimize your supply chain.',
 }
 
 export default function RootLayout({

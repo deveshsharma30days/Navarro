@@ -12,29 +12,29 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-bold text-primary-600">
+            <Link href="/" className="text-2xl font-bold text-cyan-400">
               Navarro
             </Link>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex md:items-center md:space-x-8">
-            <Link href="/products" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <Link href="/products" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Products
             </Link>
-            <Link href="/resources" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <Link href="/resources" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Resources
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <Link href="/about" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               About
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <Link href="/contact" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Contact
             </Link>
-            <Link href="/signup" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+            <Link href="/signup" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Sign up
             </Link>
-            <Link href="/login" className="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700">
+            <Link href="/login" className="bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:shadow-lg transition-all">
               Login
             </Link>
           </div>
@@ -43,7 +43,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-700 hover:text-primary-600 focus:outline-none focus:text-primary-600"
+              className="text-gray-700 hover:text-cyan-400 focus:outline-none focus:text-cyan-400"
             >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 {isMenuOpen ? (
@@ -61,22 +61,22 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
-            <Link href="/products" className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+            <Link href="/products" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Products
             </Link>
-            <Link href="/resources" className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+            <Link href="/resources" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Resources
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+            <Link href="/about" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               About
             </Link>
-            <Link href="/contact" className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+            <Link href="/contact" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Contact
             </Link>
-            <Link href="/signup" className="text-gray-700 hover:text-primary-600 block px-3 py-2 text-base font-medium">
+            <Link href="/signup" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Sign up
             </Link>
-            <Link href="/login" className="bg-primary-600 text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-primary-700">
+            <Link href="/login" className="bg-gradient-to-r from-cyan-400 to-primary-500 text-white block px-3 py-2 rounded-md text-base font-medium hover:shadow-lg transition-all">
               Login
             </Link>
           </div>

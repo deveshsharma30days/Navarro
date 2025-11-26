@@ -15,12 +15,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/login" className="text-gray-600 hover:text-primary-600">
+                <Link href="/login" className="text-gray-600 hover:text-cyan-400">
                   Login
                 </Link>
               </li>
               <li>
-                <Link href="/signup" className="text-gray-600 hover:text-primary-600">
+                <Link href="/signup" className="text-gray-600 hover:text-cyan-400">
                   Sign up
                 </Link>
               </li>
@@ -32,12 +32,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/contact" className="text-gray-600 hover:text-primary-600">
+                <Link href="/contact" className="text-gray-600 hover:text-cyan-400">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-gray-600 hover:text-primary-600">
+                <Link href="/about" className="text-gray-600 hover:text-cyan-400">
                   About
                 </Link>
               </li>
@@ -49,12 +49,12 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/resources" className="text-gray-600 hover:text-primary-600">
+                <Link href="/resources" className="text-gray-600 hover:text-cyan-400">
                   Resources
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="text-gray-600 hover:text-primary-600">
+                <Link href="/products" className="text-gray-600 hover:text-cyan-400">
                   Products
                 </Link>
               </li>
@@ -68,10 +68,10 @@ export default function Footer() {
               © {new Date().getFullYear()} Navarro. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
-              <Link href="/privacy" className="text-gray-600 hover:text-primary-600 text-sm">
+              <Link href="/privacy" className="text-gray-600 hover:text-cyan-400 text-sm">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-600 hover:text-primary-600 text-sm">
+              <Link href="/terms" className="text-gray-600 hover:text-cyan-400 text-sm">
                 Terms of use
               </Link>
             </div>
