@@ -22,6 +22,9 @@ export default function Navbar() {
             <Link href="/products" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Products
             </Link>
+             <Link href="/tools" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              Tools
+            </Link>
             <Link href="/resources" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Resources
             </Link>
@@ -63,6 +66,9 @@ export default function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t">
             <Link href="/products" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Products
+            </Link>
+             <Link href="/tools" className="text-gray-700 hover:text-primary-600 px-3 py-2 text-sm font-medium">
+              Tools
             </Link>
             <Link href="/resources" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Resources
