@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import App from '@/components/App'
+// @ts-ignore - Importing root app.tsx file
+import App from '../app'
 
 const inter = Inter({ subsets: ['latin'] })
 
