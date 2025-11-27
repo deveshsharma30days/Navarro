@@ -341,150 +341,212 @@ export default function Resources() {
           )}
         </div>
 
-        {/* Tools Section */}
+        {/* Products Section */}
         <div className="mt-20">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
-              Shipping <span className="text-cyan-400">Tools</span>
+              Our <span className="text-cyan-400">Products</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium mb-4">
-              Essential tools to streamline your shipping and logistics operations
+              Explore our comprehensive suite of shipping education and tools
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* CBM Calculator */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+            {/* Shipping Basics Course */}
+            <div className="bg-white rounded-2xl p-10 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg text-white">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                </svg>
+              </div>
+              <div className="mb-4">
+                <span className="text-4xl font-extrabold text-cyan-400">$99</span>
+              </div>
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-3">Shipping Basics Course</h3>
+              <p className="text-xl font-bold text-gray-800 mb-3 leading-tight">Master shipping fundamentals</p>
+              <p className="text-lg text-gray-700 mb-4 leading-relaxed font-medium flex-grow">
+                Learn the essentials of shipping and logistics from the ground up
+              </p>
+              <p className="text-base text-gray-600 mb-6 italic">
+                Perfect for beginners and small businesses starting their shipping journey
+              </p>
+              <div className="flex gap-3 mt-auto">
+                <button className="flex-1 bg-cyan-400 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  View Sample
+                </button>
+                <button className="flex-1 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  Buy
+                </button>
+              </div>
+            </div>
+
+            {/* International Shipping Guide */}
+            <div className="bg-white rounded-2xl p-10 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg text-white">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="mb-4">
+                <span className="text-4xl font-extrabold text-cyan-400">$199</span>
+              </div>
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-3">International Shipping Guide</h3>
+              <p className="text-xl font-bold text-gray-800 mb-3 leading-tight">Navigate global shipping</p>
+              <p className="text-lg text-gray-700 mb-4 leading-relaxed font-medium flex-grow">
+                Comprehensive guide to international shipping, customs, and regulations
+              </p>
+              <p className="text-base text-gray-600 mb-6 italic">
+                Includes documentation requirements, duty calculations, and compliance guidelines
+              </p>
+              <div className="flex gap-3 mt-auto">
+                <button className="flex-1 bg-cyan-400 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  View Sample
+                </button>
+                <button className="flex-1 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  Buy
+                </button>
+              </div>
+            </div>
+
+            {/* Shipping Rate Calculator */}
+            <div className="bg-white rounded-2xl p-10 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-300 transform hover:-translate-y-2 flex flex-col">
+              <div className="w-20 h-20 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-2xl flex items-center justify-center mb-6 shadow-lg text-white">
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">CBM Calculator</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Calculate cubic meters instantly for accurate shipping volume and freight cost estimation.
+              <div className="mb-4">
+                <span className="text-4xl font-extrabold text-cyan-400">$49</span>
+              </div>
+              <h3 className="text-3xl font-extrabold text-gray-900 mb-3">Shipping Rate Calculator</h3>
+              <p className="text-xl font-bold text-gray-800 mb-3 leading-tight">Calculate shipping costs</p>
+              <p className="text-lg text-gray-700 mb-4 leading-relaxed font-medium flex-grow">
+                Compare rates across multiple carriers instantly
               </p>
-              <Link
-                href="/tools#cbm"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
+              <p className="text-base text-gray-600 mb-6 italic">
+                Get real-time shipping quotes and optimize your shipping costs
+              </p>
+              <div className="flex gap-3 mt-auto">
+                <button className="flex-1 bg-cyan-400 hover:bg-cyan-500 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  View Sample
+                </button>
+                <button className="flex-1 bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-xl font-semibold transition-colors">
+                  Buy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Comparison Table Section */}
+          <div className="mt-20">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+                Course <span className="text-cyan-400">Features</span>
+              </h2>
+              <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium mb-4">
+                Our shipping education products include essential features tailored to your learning needs. Compare what's included in each course and tool.
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full"></div>
             </div>
 
-            {/* Packing List & Invoice Templates */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+            <div className="bg-white rounded-2xl shadow-xl border-2 border-cyan-100 overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gradient-to-r from-cyan-50 to-primary-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-lg font-extrabold text-gray-900 border-b-2 border-cyan-200">
+                        Feature
+                      </th>
+                      <th className="px-6 py-4 text-center text-lg font-extrabold text-gray-900 border-b-2 border-cyan-200">
+                        Shipping Basics
+                      </th>
+                      <th className="px-6 py-4 text-center text-lg font-extrabold text-gray-900 border-b-2 border-cyan-200">
+                        International Guide
+                      </th>
+                      <th className="px-6 py-4 text-center text-lg font-extrabold text-gray-900 border-b-2 border-cyan-200">
+                        Rate Calculator
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Shipping Fundamentals</td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Carrier Comparison</td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Rate Calculation</td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Packaging Guidelines</td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Labeling Requirements</td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">International Customs</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Duty & Tax Calculation</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Documentation Guide</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Real-time Rate Quotes</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Multi-Carrier Comparison</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                    <tr className="border-b border-cyan-100 hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Shipping Cost Optimization</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                    <tr className="hover:bg-cyan-50 transition-colors">
+                      <td className="px-6 py-4 text-gray-800 font-medium">Delivery Time Estimates</td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-gray-300 text-xl">✗</span></td>
+                      <td className="px-6 py-4 text-center"><span className="text-cyan-400 text-2xl font-bold">✓</span></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Templates</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Download professional packing list and invoice templates for seamless documentation.
-              </p>
-              <Link
-                href="/tools#templates"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
-            </div>
-
-            {/* Documentation Check */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Documentation Check</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Verify all required shipping documents are complete before shipment to avoid delays.
-              </p>
-              <Link
-                href="/tools#documentation"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
-            </div>
-
-            {/* Duty Calculation */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Duty Calculation</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Calculate import duties and taxes accurately based on product value and duty rates.
-              </p>
-              <Link
-                href="/tools#duty"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
-            </div>
-
-            {/* Landing Cost Calculator */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Landing Cost Calculator</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Calculate total landing costs including product cost, duties, shipping, and other fees.
-              </p>
-              <Link
-                href="/tools#landing-cost"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
-            </div>
-
-            {/* Vessel Tracking */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Vessel Tracking</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Track your vessel in real-time using vessel number or name for ocean freight shipments.
-              </p>
-              <Link
-                href="/tools#vessel-tracking"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
-            </div>
-
-            {/* Container Tracking */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-2">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Container Tracking</h3>
-              <p className="text-gray-600 leading-relaxed font-medium mb-4">
-                Track shipping containers by container number to monitor your cargo location.
-              </p>
-              <Link
-                href="/tools#container-tracking"
-                className="inline-block w-full bg-gradient-to-r from-cyan-400 to-primary-500 text-white px-4 py-2 rounded-lg text-sm font-semibold text-center hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-              >
-                Use Tool
-              </Link>
             </div>
           </div>
         </div>

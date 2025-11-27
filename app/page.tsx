@@ -401,7 +401,7 @@ export default function Home() {
       </section>
 
       {/* Featured Tools Section */}
-      <section className="py-20 bg-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-white to-primary-50 relative overflow-hidden">
         {/* Wave Background Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1200 200" preserveAspectRatio="none">
@@ -425,97 +425,161 @@ export default function Home() {
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Horizontal List Style Layout */}
+          <div className="space-y-4">
             {/* CBM Calculator */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            <Link href="/tools#cbm" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">CBM Calculator</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Calculate cubic meters instantly for accurate shipping volume and freight cost estimation.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">CBM Calculator</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Calculate cubic meters instantly for accurate shipping volume and freight cost estimation.
-              </p>
-            </div>
+            </Link>
 
             {/* Packing List & Invoice Templates */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            <Link href="/tools#templates" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Templates</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Download professional packing list and invoice templates for seamless documentation.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Templates</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Download professional packing list and invoice templates for seamless documentation.
-              </p>
-            </div>
+            </Link>
 
             {/* Documentation Check */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <Link href="/tools#documentation" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Documentation Check</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Verify all required shipping documents are complete before shipment to avoid delays.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Documentation Check</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Verify all required shipping documents are complete before shipment to avoid delays.
-              </p>
-            </div>
+            </Link>
 
             {/* Duty Calculation */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <Link href="/tools#duty" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Duty Calculation</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Calculate import duties and taxes accurately based on product value and duty rates.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Duty Calculation</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Calculate import duties and taxes accurately based on product value and duty rates.
-              </p>
-            </div>
+            </Link>
 
             {/* Landing Cost Calculator */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <Link href="/tools#landing-cost" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Landing Cost Calculator</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Calculate total landing costs including product cost, duties, shipping, and other fees.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Landing Cost Calculator</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Calculate total landing costs including product cost, duties, shipping, and other fees.
-              </p>
-            </div>
+            </Link>
 
             {/* Vessel Tracking */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <Link href="/tools#vessel-tracking" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Vessel Tracking</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Track your vessel in real-time using vessel number or name for ocean freight shipments.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Vessel Tracking</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Track your vessel in real-time using vessel number or name for ocean freight shipments.
-              </p>
-            </div>
+            </Link>
 
             {/* Container Tracking */}
-            <div className="group bg-white rounded-2xl p-6 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
-              <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-xl flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+            <Link href="/tools#container-tracking" className="group block bg-white rounded-xl p-6 shadow-lg border-l-4 border-cyan-400 hover:shadow-xl hover:border-cyan-500 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-lg flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-extrabold text-gray-900 mb-2 group-hover:text-cyan-600 transition-colors">Container Tracking</h3>
+                    <p className="text-gray-600 leading-relaxed font-medium">
+                      Track shipping containers by container number to monitor your cargo location.
+                    </p>
+                  </div>
+                </div>
+                <svg className="w-6 h-6 text-cyan-400 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </div>
-              <h3 className="text-xl font-extrabold text-gray-900 mb-3">Container Tracking</h3>
-              <p className="text-gray-600 leading-relaxed font-medium">
-                Track shipping containers by container number to monitor your cargo location.
-              </p>
-            </div>
+            </Link>
           </div>
 
           <div className="text-center mt-12">
