@@ -60,15 +60,14 @@ export default function Home() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-cyan-300 mb-6 leading-tight tracking-tight" style={{ textShadow: '0 0 20px rgba(0,0,0,0.8), 0 4px 8px rgba(0,0,0,0.6), 2px 2px 4px rgba(0,0,0,0.8)' }}>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-cyan-300 mb-6 leading-tight tracking-tight">
               Master the Art of <span className="text-cyan-100">Shipping</span>
             </h1>
             <p className="text-2xl md:text-3xl font-semibold text-amber-100 mb-4" style={{ textShadow: '0 0 15px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)' }}>
               Navarro teaches you everything about shipping and logistics!
             </p>
             <p className="text-xl md:text-xl text-white mb-8 max-w-3xl mx-auto leading-relaxed font-medium" style={{ textShadow: '0 0 10px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)' }}>
-              Learn shipping best practices, optimize your logistics, and streamline your supply chain. 
-              Get expert guidance on shipping methods, rates, and international shipping requirements!
+              Transform your shipping operations with expert insights, powerful tools, and comprehensive resources designed for modern businesses.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full mb-8"></div>
             <Link
