@@ -25,8 +25,11 @@ export default function Navbar() {
             <Link href="/resources" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Resources
             </Link>
+            <Link href="/blogs" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
+              Blogs
+            </Link>
             <Link href="/about" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
-              About
+              About Us
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-cyan-400 px-3 py-2 text-sm font-medium">
               Contact
@@ -67,8 +70,11 @@ export default function Navbar() {
             <Link href="/resources" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Resources
             </Link>
+            <Link href="/blogs" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
+              Blogs
+            </Link>
             <Link href="/about" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
-              About
+              About Us
             </Link>
             <Link href="/contact" className="text-gray-700 hover:text-cyan-400 block px-3 py-2 text-base font-medium">
               Contact
