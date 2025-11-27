@@ -124,7 +124,7 @@ export default function Products() {
               Course <span className="text-cyan-400">Features</span>
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium mb-4">
-              Our shipping education products include essential features tailored to your learning needs. Compare what's included in each course and tool.
+              Our shipping education products include essential features tailored to your learning needs. Compare what&apos;s included in each course and tool.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full"></div>
           </div>

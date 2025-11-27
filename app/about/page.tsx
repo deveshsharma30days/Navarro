@@ -45,7 +45,7 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">Our Approach</h2>
             </div>
             <p className="text-xl text-gray-700 leading-relaxed font-medium ml-6">
-              By leveraging technology and standardized processes, we've created a powerful educational platform that eliminates 
+              By leveraging technology and standardized processes, we&apos;ve created a powerful educational platform that eliminates 
               the need for extensive shipping expertise. Our platform guides users through the entire 
               shipping process, from choosing shipping methods to calculating rates and managing logistics, all in just <span className="text-cyan-400 font-semibold">three simple steps</span>.
             </p>
@@ -68,7 +68,7 @@ export default function About() {
                   <h3 className="text-3xl font-extrabold text-gray-900">E-Commerce Businesses</h3>
                 </div>
                 <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                  Whether you're just starting or scaling your online store, <span className="text-cyan-400 font-semibold">Navarro helps you master shipping 
+                  Whether you&apos;re just starting or scaling your online store, <span className="text-cyan-400 font-semibold">Navarro helps you master shipping 
                   strategies</span> to reduce costs, improve customer satisfaction, and increase efficiency.
                 </p>
               </div>

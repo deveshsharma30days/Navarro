@@ -164,7 +164,7 @@ export default function Home() {
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-start">
                     <span className="text-cyan-400 mr-3 text-xl font-bold">✓</span>
-                    <span className="text-lg font-medium leading-relaxed">Enhance your team's shipping knowledge and efficiency</span>
+                    <span className="text-lg font-medium leading-relaxed">Enhance your team&apos;s shipping knowledge and efficiency</span>
                   </li>
                 </ul>
               </div>
@@ -179,7 +179,7 @@ export default function Home() {
               
               <div className="ml-6">
                 <h4 className="text-xl font-bold text-gray-800 mb-6 leading-tight">
-                  All industries, all sizes. Whether you're a startup, manufacturer, or established business shipping products
+                  All industries, all sizes. Whether you&apos;re a startup, manufacturer, or established business shipping products
                 </h4>
                 <ul className="space-y-4 text-gray-700">
                   <li className="flex items-start">
@@ -628,7 +628,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-                "Navarro has completely transformed how we handle shipping. The tools are intuitive and the learning modules helped our team understand international shipping regulations. Highly recommended!"
+                &quot;Navarro has completely transformed how we handle shipping. The tools are intuitive and the learning modules helped our team understand international shipping regulations. Highly recommended!&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
@@ -651,7 +651,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-                "The CBM calculator and duty calculation tools saved us hours of manual work. The documentation check feature ensures we never miss any required paperwork. Excellent platform!"
+                &quot;The CBM calculator and duty calculation tools saved us hours of manual work. The documentation check feature ensures we never miss any required paperwork. Excellent platform!&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
@@ -674,7 +674,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-                "As a small business owner, Navarro made international shipping accessible. The learning modules are comprehensive and the templates saved me so much time. Worth every penny!"
+                &quot;As a small business owner, Navarro made international shipping accessible. The learning modules are comprehensive and the templates saved me so much time. Worth every penny!&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">

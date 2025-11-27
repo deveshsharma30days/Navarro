@@ -33,7 +33,7 @@ export default function Contact() {
             Contact Us
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get in touch with our team. We're here to help with your transfer pricing needs.
+            Get in touch with our team. We&apos;re here to help with your shipping needs.
           </p>
         </div>
 
