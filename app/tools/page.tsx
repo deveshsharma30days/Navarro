@@ -24,7 +24,7 @@ export default function Tools() {
           </defs>
           <rect width="100" height="100" fill="url(#grid-cbm)" />
         </svg>
-      ),
+      ),   
     },
     {
       id: 'cbm-3d',
@@ -184,6 +184,21 @@ export default function Tools() {
 
   return (
     <main className="min-h-screen py-20 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">
+      <div className="absolute inset-0 w-full h-full z-0 opacity-40 ">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover min-w-full min-h-full"
+            style={{ objectFit: 'cover' }}
+          >
+            <source src="/video/2.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+
       {/* Wave Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1200 200" preserveAspectRatio="none">
@@ -256,10 +271,12 @@ export default function Tools() {
         </svg>
       </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Header Section */}
         <div className="text-center mb-16 relative">
           {/* Shipping Icons Decoration */}
           <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-full max-w-4xl opacity-10 pointer-events-none">
+          
             <div className="flex justify-center items-center gap-8">
               {/* Container Icon */}
               <svg className="w-16 h-16" viewBox="0 0 100 100" fill="none">
@@ -270,6 +287,7 @@ export default function Tools() {
               </svg>
               {/* Ship Icon */}
               <svg className="w-20 h-20" viewBox="0 0 100 100" fill="none">
+                
                 <path d="M10 70 L90 70 L85 50 L15 50 Z" fill="none" stroke="currentColor" strokeWidth="2"/>
                 <rect x="25" y="45" width="50" height="25" fill="none" stroke="currentColor" strokeWidth="1.5" rx="1"/>
                 <circle cx="35" cy="57" r="5" fill="currentColor" opacity="0.3"/>
@@ -283,8 +301,10 @@ export default function Tools() {
               </svg>
             </div>
           </div>
+          
 
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 tracking-tight relative z-10">
+                    
             Shipping <span className="text-cyan-400">Tools</span>
           </h1>
           <p className="text-2xl text-gray-700 max-w-3xl mx-auto leading-relaxed font-medium mb-4 relative z-10">
