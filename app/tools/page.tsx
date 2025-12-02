@@ -16,6 +16,17 @@ export default function Tools() {
       gradient: 'from-cyan-400 to-blue-500',
     },
     {
+      id: 'cbm-3d',
+      title: 'CBM Calculator 3D',
+      description: 'Visualize container packing with interactive 3D viewer. See how boxes fit in shipping containers.',
+      icon: (
+        <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+      ),
+      gradient: 'from-blue-500 to-cyan-600',
+    },
+    {
       id: 'templates',
       title: 'Templates',
       description: 'Download professional packing list and invoice templates for seamless documentation.',
@@ -113,7 +124,7 @@ export default function Tools() {
           {tools.map((tool) => (
             <Link
               key={tool.id}
-              href={`#${tool.id}`}
+              href={tool.id === 'cbm' ? '/tools/cbm' : tool.id === 'cbm-3d' ? '/tools/cbm-3d' : tool.id === 'duty' ? '/tools/duty' : `#${tool.id}`}
               className="group relative bg-white rounded-2xl p-8 shadow-xl border-2 border-cyan-100 hover:shadow-2xl hover:border-cyan-400 transition-all duration-500 transform hover:-translate-y-3 hover:scale-105 overflow-hidden"
             >
               {/* Gradient Background Effect */}
