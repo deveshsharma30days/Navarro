@@ -169,7 +169,7 @@ export default function CBM3DCalculator() {
         const placedGroup = new THREE.Group()
         scene.add(placedGroup)
 
-        let containerWire: THREE.LineSegments | null = null
+        let containerWire: any = null
 
         const createContainerWire = () => {
           if (containerWire) {
@@ -208,7 +208,7 @@ export default function CBM3DCalculator() {
               if ('geometry' in old && old.geometry) old.geometry.dispose()
               if ('material' in old && old.material) {
                 if (Array.isArray(old.material)) {
-                  old.material.forEach((m) => m.dispose())
+                  old.material.forEach((m: any) => m.dispose())
                 } else {
                   old.material.dispose()
                 }
@@ -377,7 +377,7 @@ export default function CBM3DCalculator() {
 
         const toggleWireframe = () => {
           wireframeMode = !wireframeMode
-          placedGroup.children.forEach((child) => {
+          placedGroup.children.forEach((child: any) => {
             if ('material' in child && child.material && !Array.isArray(child.material)) {
               if ('wireframe' in child.material) {
                 child.material.wireframe = wireframeMode
@@ -387,7 +387,7 @@ export default function CBM3DCalculator() {
         }
 
         const takeScreenshot = () => {
-          renderer.domElement.toBlob((blob) => {
+          renderer.domElement.toBlob((blob: Blob | null) => {
             if (blob) {
               const url = URL.createObjectURL(blob)
               const a = document.createElement('a')
@@ -405,8 +405,174 @@ export default function CBM3DCalculator() {
         ;(window as any).takeScreenshot = takeScreenshot
 
         const update3D = () => {
-          createContainerWire()
-          placeBoxes()
+          // Get current values from the component state
+          const currentContainer = container
+          const currentRows = rows
+          const currentUnit = unit
+          
+          // Recreate container wire with current container
+          const c = currentContainer
+          const L = c.L
+          const W = c.W
+          const H = c.H
+          
+          if (containerWire) {
+            scene.remove(containerWire)
+            if (containerWire.geometry) containerWire.geometry.dispose()
+            if (containerWire.material) containerWire.material.dispose()
+            containerWire = null
+          }
+
+          const geom = new THREE.BoxGeometry(L, H, W)
+          const edges = new THREE.EdgesGeometry(geom)
+          const mat = new THREE.LineBasicMaterial({ color: 0x9fb7d6 })
+          containerWire = new THREE.LineSegments(edges, mat)
+          containerWire.position.set(0, H / 2, 0)
+          scene.remove(scene.children.find((child: any) => child.type === 'Plane') || scene.children[0])
+          scene.add(containerWire)
+
+          const floorGeo = new THREE.PlaneGeometry(L * 1.2, W * 1.2)
+          const floorMat = new THREE.MeshStandardMaterial({
+            color: 0x1a365d,
+            opacity: 0.1,
+            transparent: true,
+            side: THREE.DoubleSide,
+          })
+          const floor = new THREE.Mesh(floorGeo, floorMat)
+          floor.rotation.x = -Math.PI / 2
+          floor.position.y = 0
+          scene.add(floor)
+
+          // Recreate boxes with current rows
+          while (placedGroup.children.length) {
+            const old = placedGroup.children.pop()
+            if (old) {
+              if ('geometry' in old && old.geometry) old.geometry.dispose()
+              if ('material' in old && old.material) {
+                if (Array.isArray(old.material)) {
+                  old.material.forEach((m: any) => m.dispose())
+                } else {
+                  old.material.dispose()
+                }
+              }
+            }
+          }
+
+          const toMetersLocal = (val: string | number): number => {
+            const n = parseFloat(String(val))
+            if (isNaN(n)) return 0
+            return currentUnit === 'cm' ? n / 100 : n
+          }
+
+          const items: Array<{ L: number; W: number; H: number; src: number }> = []
+          currentRows.forEach((r) => {
+            const qty = parseInt(r.qty) || 0
+            for (let i = 0; i < qty; i++) {
+              items.push({
+                L: toMetersLocal(r.length),
+                W: toMetersLocal(r.width),
+                H: toMetersLocal(r.height),
+                src: r.id,
+              })
+            }
+          })
+
+          if (items.length === 0) return
+
+          items.sort((a, b) => b.L * b.W * b.H - a.L * a.W * a.H)
+
+          const placed: Array<{ x: number; y: number; z: number; lx: number; ly: number; lz: number }> = []
+          const step = 0.02
+          const adaptiveStep = Math.max(step, Math.min(L, W) / 40)
+
+          const overlaps = (a: typeof placed[0], b: typeof placed[0]) => {
+            return (
+              Math.abs(a.x - b.x) * 2 < a.lx + b.lx &&
+              Math.abs(a.y - b.y) * 2 < a.ly + b.ly &&
+              Math.abs(a.z - b.z) * 2 < a.lz + b.lz
+            )
+          }
+
+          const layers: Array<{ y: number; height: number }> = []
+          layers.push({ y: 0, height: 0 })
+
+          items.forEach((it) => {
+            const lx = Math.max(0.0001, it.L)
+            const lz = Math.max(0.0001, it.W)
+            const ly = Math.max(0.0001, it.H)
+            let placedThis = false
+
+            for (let li = 0; li < layers.length && !placedThis; li++) {
+              const layer = layers[li]
+              if (layer.height && layer.y + layer.height + ly > H + 1e-9) continue
+
+              const stepXZ = adaptiveStep
+              for (let x = -L / 2 + lx / 2; x <= L / 2 - lx / 2 + 1e-9; x += stepXZ) {
+                if (placedThis) break
+                for (let z = -W / 2 + lz / 2; z <= W / 2 - lz / 2 + 1e-9; z += stepXZ) {
+                  const y = layer.y + ly / 2
+                  const candidate = { x, y, z, lx, ly, lz }
+                  let ok = true
+                  for (const p of placed) {
+                    if (overlaps(candidate, p)) {
+                      ok = false
+                      break
+                    }
+                  }
+                  if (!ok) continue
+                  placed.push(candidate)
+                  if (!layer.height || ly > layer.height) layer.height = ly
+                  placedThis = true
+                  break
+                }
+                if (placedThis) break
+              }
+            }
+
+            if (!placedThis) {
+              const newLayerY = layers.reduce((s, Lr) => Math.max(s, Lr.y + Lr.height), 0)
+              if (newLayerY + ly <= H + 1e-9) {
+                const layer = { y: newLayerY, height: ly }
+                layers.push(layer)
+                const x = -L / 2 + lx / 2
+                const z = -W / 2 + lz / 2
+                const candidate = { x, y: layer.y + ly / 2, z, lx, ly, lz }
+                let ok = true
+                for (const p of placed) {
+                  if (overlaps(candidate, p)) {
+                    ok = false
+                    break
+                  }
+                }
+                if (ok) placed.push(candidate)
+                else placed.push({ x: 0, y: layer.y + ly / 2, z: 0, lx, ly, lz })
+              }
+            }
+          })
+
+          placed.forEach((p) => {
+            const geom = new THREE.BoxGeometry(p.lx, p.ly, p.lz)
+            const mat = new THREE.MeshStandardMaterial({
+              color: new THREE.Color(
+                Math.random() * 0.5 + 0.3,
+                Math.random() * 0.5 + 0.3,
+                Math.random() * 0.5 + 0.3
+              ),
+              roughness: 0.7,
+              metalness: 0.1,
+              wireframe: wireframeMode,
+            })
+            const mesh = new THREE.Mesh(geom, mat)
+            mesh.position.set(p.x, p.y, p.z)
+
+            const edges = new THREE.EdgesGeometry(geom)
+            const lineMat = new THREE.LineBasicMaterial({ color: 0x000000 })
+            const lines = new THREE.LineSegments(edges, lineMat)
+            lines.position.copy(mesh.position)
+
+            placedGroup.add(mesh)
+            placedGroup.add(lines)
+          })
         }
 
         // Store update function globally so it can be called when data changes
@@ -454,25 +620,20 @@ export default function CBM3DCalculator() {
     return () => {
       threeInitialized.current = false
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Update 3D scene when data changes
   useEffect(() => {
     if (!threeInitialized.current || !(window as any).THREE) return
     
-    const THREE = (window as any).THREE
     if (!viewerRef.current) return
 
-    // Find the scene and update it
-    const updateScene = () => {
-      // This will be called by the stored update function
-      if ((window as any).updateCBM3D) {
-        ;(window as any).updateCBM3D()
-      }
+    // Update scene using stored function
+    if ((window as any).updateCBM3D) {
+      ;(window as any).updateCBM3D()
     }
-
-    updateScene()
-  }, [container, rows, unit])
+  }, [container.H, container.L, container.W, container.volume, rows, unit])
 
   return (
     <main className="min-h-screen py-12 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">

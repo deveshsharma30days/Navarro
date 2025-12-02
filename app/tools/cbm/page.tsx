@@ -92,6 +92,7 @@ export default function CBMCalculator() {
 
   useEffect(() => {
     calculate()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items, precision, actualWeight])
 
   const addRow = () => {
