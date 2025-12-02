@@ -192,7 +192,7 @@ export default function CBMCalculator() {
             CBM Calculator — <span className="text-cyan-400">Seafreight (FCL & LCL)</span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
-            Calculate CBM, volume weight and container suggestions (20&apos;GP / 40&apos;GP / 40&apos;HC). Reference: IncoDocs.
+            Calculate CBM, volume weight and container suggestions (20&apos;GP / 40&apos;GP / 40&apos;HC).
           </p>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full mt-4"></div>
         </div>
@@ -425,17 +425,6 @@ export default function CBMCalculator() {
               </p>
               <p>
                 <strong className="text-gray-900">FCL guidance:</strong> Choose container type by total CBM. Typical internal volumes used by this tool (approx): 20&apos;GP=33, 40&apos;GP=67, 40&apos;HC=76 m³.
-              </p>
-              <p>
-                Reference:{' '}
-                <a
-                  href="https://incodocs.com/tools/cbm-calculator-seafreight"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cyan-400 hover:text-cyan-600 font-semibold underline"
-                >
-                  IncoDocs CBM Calculator
-                </a>
               </p>
             </div>
           </div>
