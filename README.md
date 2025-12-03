@@ -1,4 +1,4 @@
-# Navarro - Transfer Pricing Reports Platform
+# Navaro - Transfer Pricing Reports Platform
 
 A modern web application for automating transfer pricing reports, built with Next.js, TypeScript, and Tailwind CSS.
 
@@ -48,7 +48,7 @@ npm start
 ## Project Structure
 
 ```
-navarro/
+Navaro/
 ├── app/
 │   ├── about/
 │   ├── contact/

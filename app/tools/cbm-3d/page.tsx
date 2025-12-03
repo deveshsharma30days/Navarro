@@ -156,12 +156,19 @@ export default function CBM3DCalculator() {
     unitRef.current = unit
 
     const viewer = viewerRef.current
-    viewer.innerHTML = ''
+    
+    // Only clear if renderer doesn't exist yet
+    if (!rendererRef.current) {
+      viewer.innerHTML = ''
+    }
 
-    // Scene
-    const scene = new THREE.Scene()
-    scene.background = new THREE.Color(0x0b1220)
-    sceneRef.current = scene
+    // Scene - only create if it doesn't exist
+    let scene = sceneRef.current
+    if (!scene) {
+      scene = new THREE.Scene()
+      scene.background = new THREE.Color(0x0b1220)
+      sceneRef.current = scene
+    }
 
     // Camera
     const fov = 50
@@ -188,12 +195,18 @@ export default function CBM3DCalculator() {
     // Set initial camera position
     updateCameraPosition()
 
-    // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
-    renderer.setSize(viewer.clientWidth, viewer.clientHeight)
-    renderer.setPixelRatio(window.devicePixelRatio || 1)
-    viewer.appendChild(renderer.domElement)
-    rendererRef.current = renderer
+    // Renderer - only create if it doesn't exist
+    let renderer = rendererRef.current
+    if (!renderer) {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false })
+      renderer.setSize(viewer.clientWidth, viewer.clientHeight)
+      renderer.setPixelRatio(window.devicePixelRatio || 1)
+      viewer.appendChild(renderer.domElement)
+      rendererRef.current = renderer
+    } else {
+      // Update size if renderer already exists
+      renderer.setSize(viewer.clientWidth, viewer.clientHeight)
+    }
 
     // Mouse controls
     const handleMouseDown = (e: MouseEvent) => {
@@ -313,13 +326,19 @@ export default function CBM3DCalculator() {
         return
       }
 
-      while (placedGroupRef.current.children.length) {
-        const old = placedGroupRef.current.children.pop()
-        if (old) {
-          if (old.geometry) old.geometry.dispose()
-          if (old.material) old.material.dispose()
+      // Safely remove children without breaking the group
+      const childrenToRemove = [...placedGroupRef.current.children]
+      childrenToRemove.forEach((old) => {
+        placedGroupRef.current.remove(old)
+        if (old.geometry) old.geometry.dispose()
+        if (old.material) {
+          if (Array.isArray(old.material)) {
+            old.material.forEach((m: any) => m.dispose())
+          } else {
+            old.material.dispose()
+          }
         }
-      }
+      })
 
       // Always read from refs to get latest values
       const c = containerRef.current
@@ -524,27 +543,30 @@ export default function CBM3DCalculator() {
     ;(window as any).takeScreenshot = takeScreenshot
     ;(window as any).updateCBM3D = update3D
 
-    // Initial setup
-    console.log('Initializing 3D scene...')
-    updateCameraPosition()
-    console.log('Camera position set')
-    createContainerWire()
-    console.log('Container wire created')
-    placeBoxesSimple()
-    console.log('Boxes placed')
+    // Initial setup - only run once
+    if (!is3DInitializedRef.current) {
+      console.log('Initializing 3D scene...')
+      updateCameraPosition()
+      console.log('Camera position set')
+      createContainerWire()
+      console.log('Container wire created')
+      placeBoxesSimple()
+      console.log('Boxes placed')
 
-    const animate = () => {
-      requestAnimationFrame(animate)
-      const currentScene = sceneRef.current
-      if (rendererRef.current && currentScene && cameraRef.current) {
-        rendererRef.current.render(currentScene, cameraRef.current)
+      // Animation loop - only start once
+      const animate = () => {
+        requestAnimationFrame(animate)
+        const currentScene = sceneRef.current
+        if (rendererRef.current && currentScene && cameraRef.current) {
+          rendererRef.current.render(currentScene, cameraRef.current)
+        }
       }
-    }
-    animate()
-    console.log('Animation loop started')
+      animate()
+      console.log('Animation loop started')
 
-    is3DInitializedRef.current = true
-    console.log('3D initialization complete')
+      is3DInitializedRef.current = true
+      console.log('3D initialization complete')
+    }
 
     return () => {
       window.removeEventListener('resize', onResize)

@@ -43,7 +43,7 @@ export default function Contact() {
             <div className="space-y-4">
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Email</h3>
-                <p className="text-gray-600">contact@navarro.com</p>
+                <p className="text-gray-600">contact@Navaro.com</p>
               </div>
               <div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">Phone</h3>

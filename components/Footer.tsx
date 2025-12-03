@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo */}
           <div className="col-span-1">
-            <h2 className="text-2xl font-bold mb-4">Navarro</h2>
+            <h2 className="text-2xl font-bold mb-4">Navaro</h2>
           </div>
 
           {/* Quick Links */}
@@ -70,7 +70,7 @@ export default function Footer() {
         <div className="mt-8 pt-8 border-t border-primary-200">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-600 text-sm">
-              © {new Date().getFullYear()} Navarro. All rights reserved.
+              © {new Date().getFullYear()} Navaro. All rights reserved.
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link href="/privacy" className="text-gray-600 hover:text-cyan-400 text-sm">

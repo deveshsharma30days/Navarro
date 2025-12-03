@@ -5,7 +5,7 @@ export default function About() {
         {/* Header Section */}
         <div className="text-center mb-20">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 tracking-tight">
-            About <span className="text-cyan-400">Navarro</span>
+            About <span className="text-cyan-400">Navaro</span>
           </h1>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full"></div>
         </div>
@@ -18,7 +18,7 @@ export default function About() {
               <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">Our Mission</h2>
             </div>
             <p className="text-xl text-gray-700 leading-relaxed font-medium ml-6">
-              Navarro is dedicated to <span className="text-cyan-400 font-semibold">democratizing shipping knowledge</span> by making it accessible, 
+              Navaro is dedicated to <span className="text-cyan-400 font-semibold">democratizing shipping knowledge</span> by making it accessible, 
               affordable, and straightforward for businesses of all sizes. We believe that every company 
               shipping products should have access to professional-grade shipping education and logistics solutions 
               without the complexity and high costs traditionally associated with supply chain management.
@@ -68,7 +68,7 @@ export default function About() {
                   <h3 className="text-3xl font-extrabold text-gray-900">E-Commerce Businesses</h3>
                 </div>
                 <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                  Whether you&apos;re just starting or scaling your online store, <span className="text-cyan-400 font-semibold">Navarro helps you master shipping 
+                  Whether you&apos;re just starting or scaling your online store, <span className="text-cyan-400 font-semibold">Navaro helps you master shipping 
                   strategies</span> to reduce costs, improve customer satisfaction, and increase efficiency.
                 </p>
               </div>
@@ -83,7 +83,7 @@ export default function About() {
                   <h3 className="text-3xl font-extrabold text-gray-900">Manufacturers & Wholesalers</h3>
                 </div>
                 <p className="text-lg text-gray-700 leading-relaxed font-medium">
-                  From startups to established enterprises shipping products globally, <span className="text-cyan-400 font-semibold">Navarro helps you 
+                  From startups to established enterprises shipping products globally, <span className="text-cyan-400 font-semibold">Navaro helps you 
                   optimize logistics</span>, reduce shipping costs, and streamline your supply chain.
                 </p>
               </div>

@@ -73,10 +73,10 @@ export default function Home() {
                 <span className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-red-400 text-[1em] leading-none pointer-events-none">·</span>
               </span>pping</span>
             </h1>
-            <p className="text-2xl md:text-3xl font-semibold text-amber-100 mb-4" style={{ textShadow: '0 0 15px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)' }}>
-              Navarro teaches you everything about shipping and logistics!
+            <p className="text-2xl md:text-3xl font-semibold text-amber-100 mb-4">
+              Navaro teaches you everything about shipping and logistics!
             </p>
-            <p className="text-xl md:text-xl text-white mb-8 max-w-3xl mx-auto leading-relaxed font-medium" style={{ textShadow: '0 0 10px rgba(0,0,0,0.8), 0 2px 4px rgba(0,0,0,0.6)' }}>
+            <p className="text-xl md:text-xl text-white mb-8 max-w-3xl mx-auto leading-relaxed font-medium" >
               Transform your shipping operations with expert insights, powerful tools, and comprehensive resources designed for modern businesses.
             </p>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full mb-8"></div>
@@ -638,7 +638,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-                &quot;Navarro has completely transformed how we handle shipping. The tools are intuitive and the learning modules helped our team understand international shipping regulations. Highly recommended!&quot;
+                &quot;Navaro has completely transformed how we handle shipping. The tools are intuitive and the learning modules helped our team understand international shipping regulations. Highly recommended!&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
@@ -684,7 +684,7 @@ export default function Home() {
                 ))}
               </div>
               <p className="text-gray-700 text-lg leading-relaxed font-medium mb-6">
-                &quot;As a small business owner, Navarro made international shipping accessible. The learning modules are comprehensive and the templates saved me so much time. Worth every penny!&quot;
+                &quot;As a small business owner, Navaro made international shipping accessible. The learning modules are comprehensive and the templates saved me so much time. Worth every penny!&quot;
               </p>
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-gradient-to-br from-cyan-400 to-primary-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">

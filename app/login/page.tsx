@@ -29,7 +29,7 @@ export default function Login() {
         <div className="bg-white rounded-lg shadow-md p-8">
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">Login</h1>
-            <p className="text-gray-600">Welcome back to Navarro</p>
+            <p className="text-gray-600">Welcome back to Navaro</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">

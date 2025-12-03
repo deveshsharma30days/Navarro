@@ -24,7 +24,7 @@ export default function Navbar() {
               </div>
               {/* Logo Text */}
               <span className="text-2xl font-extrabold text-white tracking-tight group-hover:text-cyan-200 transition-colors duration-300">
-                Navarro
+                Navaro
               </span>
             </Link>
           </div>
