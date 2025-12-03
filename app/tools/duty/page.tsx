@@ -243,30 +243,27 @@ export default function DutyCalculator() {
   }
 
   return (
-    <main className="min-h-screen py-20 bg-gradient-to-b from-primary-50 to-white relative overflow-hidden">
-      {/* Wave Background Elements */}
+    <main className="min-h-screen py-12 bg-gradient-to-br from-purple-50 via-pink-50 to-red-50 relative overflow-hidden">
+      {/* Geometric Background Pattern */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1200 200" preserveAspectRatio="none">
-          <path d="M0,100 Q200,50 400,100 T800,100 T1200,100 L1200,200 L0,200 Z" fill="url(#waveGradientDuty)" />
-          <defs>
-            <linearGradient id="waveGradientDuty" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#22d3ee" />
-              <stop offset="100%" stopColor="#0ea5e9" />
-            </linearGradient>
-          </defs>
-        </svg>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute bottom-20 left-10 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-red-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
-            🌍 International Trade <span className="text-cyan-400">Duty Calculator</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Header - Centered with Badge */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-5 py-2 rounded-full text-sm font-bold mb-4 shadow-lg">
+            <span>🌍</span>
+            <span>INTERNATIONAL TRADE</span>
+          </div>
+          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-3 leading-tight">
+            Duty <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-pink-600">Calculator</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Calculate import and export duties, taxes, and total costs for international shipments
           </p>
-          <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-primary-500 mx-auto rounded-full mt-4"></div>
         </div>
 
         {/* Error Message */}
@@ -284,20 +281,95 @@ export default function DutyCalculator() {
           </div>
         )}
 
-        {/* Calculator Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-          {/* Import Calculator */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-2 border-red-200 hover:border-red-400 transition-all duration-300">
-            <div className="flex items-center mb-6 pb-4 border-b-2 border-gray-100">
-              <span className="text-3xl mr-4">📥</span>
-              <h2 className="text-2xl font-extrabold text-gray-900">Import Duty Calculator</h2>
+        {/* Results Section - Show at Top if Available */}
+        {results && (
+          <div className="mb-8 bg-white rounded-2xl p-6 shadow-2xl border-4 border-purple-500 animate-fadeIn">
+            <div className="flex justify-between items-start mb-6">
+              <div>
+                <h2 className="text-3xl font-black text-gray-900 mb-2">
+                  {calculationType === 'import' ? '📥 Import' : '📤 Export'} Results
+                </h2>
+                <p className="text-gray-600 text-sm">HS Code: {results.hsCode} | Country: {results.country}</p>
+              </div>
+              <button
+                onClick={resetCalculator}
+                className="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg font-bold hover:shadow-lg transition-all"
+              >
+                New Calculation
+              </button>
             </div>
 
-            <div className="space-y-5">
+            {/* Results Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {calculationType === 'import' && results.type === 'import' && (
+                <>
+                  <div className="bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-5 border-l-4 border-red-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Total Cost</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.totalCost.toLocaleString('en-IN')}</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-5 border-l-4 border-red-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Import Duty</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.importDuty.toLocaleString('en-IN')}</div>
+                    <div className="text-xs text-gray-500 mt-1">{results.dutyRate}% rate</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-5 border-l-4 border-red-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">GST</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.gstAmount.toLocaleString('en-IN')}</div>
+                    <div className="text-xs text-gray-500 mt-1">{results.gstRate}% rate</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-red-100 to-pink-100 rounded-xl p-5 border-l-4 border-red-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">CIF Value</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.cifValue.toLocaleString('en-IN')}</div>
+                  </div>
+                </>
+              )}
+
+              {calculationType === 'export' && results.type === 'export' && (
+                <>
+                  <div className="bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Total Cost</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.totalCost.toLocaleString('en-IN')}</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Export Duty</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.exportDuty.toLocaleString('en-IN')}</div>
+                    <div className="text-xs text-gray-500 mt-1">{results.dutyRate}% rate</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Shipping</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.shippingCost.toLocaleString('en-IN')}</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-green-100 to-teal-100 rounded-xl p-5 border-l-4 border-green-500">
+                    <div className="text-xs text-gray-600 font-bold uppercase mb-2">Product Value</div>
+                    <div className="text-2xl font-black text-gray-900">₹{results.productValue.toLocaleString('en-IN')}</div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        )}
+
+        {/* Calculator Cards - Vertical Stack */}
+        <div className="space-y-6">
+          {/* Import Calculator */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-l-4 border-red-500 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b-2 border-gray-100">
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">📥</span>
+                </div>
+                <h2 className="text-2xl font-black text-gray-900">Import Duty Calculator</h2>
+              </div>
+              <div className="hidden md:block px-4 py-2 bg-red-50 text-red-700 rounded-lg text-sm font-bold">
+                IMPORT
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Product Value (INR)</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Product Value (INR)</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-semibold">₹</span>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-bold text-lg">₹</span>
                   <input
                     type="number"
                     value={importData.productValue}
@@ -305,111 +377,118 @@ export default function DutyCalculator() {
                     placeholder="Enter product value"
                     min="0"
                     step="0.01"
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none font-semibold text-gray-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">HS Code</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">HS Code</label>
                 <input
                   type="text"
                   value={importData.hsCode}
                   onChange={(e) => setImportData({ ...importData, hsCode: e.target.value })}
-                  placeholder="e.g., 847130, 851712"
+                  placeholder="e.g., 847130"
                   maxLength={10}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none font-semibold"
                 />
                 <div className="flex flex-wrap gap-2 mt-3">
                   <button
                     onClick={() => fillExample('import', '75000', '847130')}
-                    className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full text-xs font-medium hover:bg-cyan-400 hover:text-white hover:border-cyan-400 transition-all duration-300"
+                    className="px-4 py-1.5 bg-red-50 border-2 border-red-200 rounded-lg text-xs font-bold hover:bg-red-100 hover:border-red-300 transition-all text-red-700"
                   >
-                    Laptop: ₹75,000 (847130)
+                    💻 Laptop (847130)
                   </button>
                   <button
                     onClick={() => fillExample('import', '35000', '851712')}
-                    className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full text-xs font-medium hover:bg-cyan-400 hover:text-white hover:border-cyan-400 transition-all duration-300"
+                    className="px-4 py-1.5 bg-red-50 border-2 border-red-200 rounded-lg text-xs font-bold hover:bg-red-100 hover:border-red-300 transition-all text-red-700"
                   >
-                    Phone: ₹35,000 (851712)
+                    📱 Phone (851712)
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Destination Country</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Destination</label>
                 <select
                   value={importData.country}
                   onChange={(e) => setImportData({ ...importData, country: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none bg-white"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none bg-white font-semibold"
                 >
                   <option value="">Select country</option>
-                  <option value="IN">India</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="DE">Germany</option>
-                  <option value="FR">France</option>
-                  <option value="JP">Japan</option>
-                  <option value="AU">Australia</option>
-                  <option value="CN">China</option>
-                  <option value="BR">Brazil</option>
+                  <option value="IN">🇮🇳 India</option>
+                  <option value="US">🇺🇸 United States</option>
+                  <option value="CA">🇨🇦 Canada</option>
+                  <option value="GB">🇬🇧 United Kingdom</option>
+                  <option value="DE">🇩🇪 Germany</option>
+                  <option value="FR">🇫🇷 France</option>
+                  <option value="JP">🇯🇵 Japan</option>
+                  <option value="AU">🇦🇺 Australia</option>
+                  <option value="CN">🇨🇳 China</option>
+                  <option value="BR">🇧🇷 Brazil</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Shipping Cost (INR)</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Shipping (INR)</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-semibold">₹</span>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-bold text-lg">₹</span>
                   <input
                     type="number"
                     value={importData.shipping}
                     onChange={(e) => setImportData({ ...importData, shipping: e.target.value })}
-                    placeholder="Enter shipping cost"
+                    placeholder="Shipping cost"
                     min="0"
                     step="0.01"
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none font-semibold"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Insurance Cost (INR)</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Insurance (INR)</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-semibold">₹</span>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-bold text-lg">₹</span>
                   <input
                     type="number"
                     value={importData.insurance}
                     onChange={(e) => setImportData({ ...importData, insurance: e.target.value })}
-                    placeholder="Enter insurance cost"
+                    placeholder="Insurance cost"
                     min="0"
                     step="0.01"
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-red-500 focus:border-red-500 outline-none font-semibold"
                   />
                 </div>
               </div>
-
-              <button
-                onClick={calculateImportDuty}
-                className="w-full py-3 bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-lg font-bold hover:from-red-600 hover:to-pink-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                Calculate Import Duty
-              </button>
             </div>
+
+            <button
+              onClick={calculateImportDuty}
+              className="w-full mt-6 py-4 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-xl font-black text-lg hover:from-red-700 hover:to-pink-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              🧮 Calculate Import Duty & Taxes
+            </button>
           </div>
 
           {/* Export Calculator */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-2 border-green-200 hover:border-green-400 transition-all duration-300">
-            <div className="flex items-center mb-6 pb-4 border-b-2 border-gray-100">
-              <span className="text-3xl mr-4">📤</span>
-              <h2 className="text-2xl font-extrabold text-gray-900">Export Duty Calculator</h2>
+          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-l-4 border-green-500 hover:shadow-2xl transition-all duration-300">
+            <div className="flex items-center justify-between mb-6 pb-4 border-b-2 border-gray-100">
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                  <span className="text-2xl">📤</span>
+                </div>
+                <h2 className="text-2xl font-black text-gray-900">Export Duty Calculator</h2>
+              </div>
+              <div className="hidden md:block px-4 py-2 bg-green-50 text-green-700 rounded-lg text-sm font-bold">
+                EXPORT
+              </div>
             </div>
 
-            <div className="space-y-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Product Value (INR)</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Product Value (INR)</label>
                 <div className="relative">
-                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-semibold">₹</span>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-600 font-bold text-lg">₹</span>
                   <input
                     type="number"
                     value={exportData.productValue}
@@ -417,279 +496,84 @@ export default function DutyCalculator() {
                     placeholder="Enter product value"
                     min="0"
                     step="0.01"
-                    className="w-full pl-10 pr-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none font-semibold text-gray-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">HS Code</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">HS Code</label>
                 <input
                   type="text"
                   value={exportData.hsCode}
                   onChange={(e) => setExportData({ ...exportData, hsCode: e.target.value })}
-                  placeholder="e.g., 847130, 851712"
+                  placeholder="e.g., 870323"
                   maxLength={10}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none font-semibold"
                 />
                 <div className="flex flex-wrap gap-2 mt-3">
                   <button
                     onClick={() => fillExample('export', '60000', '870323')}
-                    className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full text-xs font-medium hover:bg-cyan-400 hover:text-white hover:border-cyan-400 transition-all duration-300"
+                    className="px-4 py-1.5 bg-green-50 border-2 border-green-200 rounded-lg text-xs font-bold hover:bg-green-100 hover:border-green-300 transition-all text-green-700"
                   >
-                    Car Parts: ₹60,000 (870323)
+                    🚗 Car Parts (870323)
                   </button>
                   <button
                     onClick={() => fillExample('export', '15000', '610910')}
-                    className="px-3 py-1 bg-gray-100 border border-gray-300 rounded-full text-xs font-medium hover:bg-cyan-400 hover:text-white hover:border-cyan-400 transition-all duration-300"
+                    className="px-4 py-1.5 bg-green-50 border-2 border-green-200 rounded-lg text-xs font-bold hover:bg-green-100 hover:border-green-300 transition-all text-green-700"
                   >
-                    Clothing: ₹15,000 (610910)
+                    👕 Clothing (610910)
                   </button>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Destination Country</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Destination</label>
                 <select
                   value={exportData.country}
                   onChange={(e) => setExportData({ ...exportData, country: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none bg-white"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white font-semibold"
                 >
                   <option value="">Select country</option>
-                  <option value="US">United States</option>
-                  <option value="CA">Canada</option>
-                  <option value="GB">United Kingdom</option>
-                  <option value="DE">Germany</option>
-                  <option value="FR">France</option>
-                  <option value="JP">Japan</option>
-                  <option value="AU">Australia</option>
-                  <option value="IN">India</option>
-                  <option value="CN">China</option>
-                  <option value="BR">Brazil</option>
+                  <option value="US">🇺🇸 United States</option>
+                  <option value="CA">🇨🇦 Canada</option>
+                  <option value="GB">🇬🇧 United Kingdom</option>
+                  <option value="DE">🇩🇪 Germany</option>
+                  <option value="FR">🇫🇷 France</option>
+                  <option value="JP">🇯🇵 Japan</option>
+                  <option value="AU">🇦🇺 Australia</option>
+                  <option value="IN">🇮🇳 India</option>
+                  <option value="CN">🇨🇳 China</option>
+                  <option value="BR">🇧🇷 Brazil</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Origin Country</label>
+                <label className="block text-sm font-bold text-gray-700 mb-2 uppercase tracking-wide">Origin Country</label>
                 <select
                   value={exportData.origin}
                   onChange={(e) => setExportData({ ...exportData, origin: e.target.value })}
-                  className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-400 focus:border-cyan-400 outline-none bg-white"
+                  className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 outline-none bg-white font-semibold"
                 >
-                  <option value="IN">India</option>
-                  <option value="CN">China</option>
-                  <option value="DE">Germany</option>
-                  <option value="JP">Japan</option>
-                  <option value="US">United States</option>
-                  <option value="BR">Brazil</option>
-                  <option value="other">Other</option>
+                  <option value="IN">🇮🇳 India</option>
+                  <option value="CN">🇨🇳 China</option>
+                  <option value="DE">🇩🇪 Germany</option>
+                  <option value="JP">🇯🇵 Japan</option>
+                  <option value="US">🇺🇸 United States</option>
+                  <option value="BR">🇧🇷 Brazil</option>
+                  <option value="other">🌍 Other</option>
                 </select>
               </div>
-
-              <button
-                onClick={calculateExportDuty}
-                className="w-full py-3 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-lg font-bold hover:from-green-600 hover:to-teal-700 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-              >
-                Calculate Export Duty
-              </button>
             </div>
+
+            <button
+              onClick={calculateExportDuty}
+              className="w-full mt-6 py-4 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-xl font-black text-lg hover:from-green-700 hover:to-teal-700 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.02]"
+            >
+              🧮 Calculate Export Duty & Fees
+            </button>
           </div>
         </div>
-
-        {/* Results Section */}
-        {results && (
-          <div className="bg-white rounded-2xl p-6 md:p-8 shadow-xl border-2 border-cyan-100 animate-fadeIn">
-            <div className="flex justify-between items-center mb-6 pb-4 border-b-2 border-gray-100">
-              <h2 className="text-3xl font-extrabold text-gray-900">
-                {calculationType === 'import' ? 'Import' : 'Export'} Calculation Results
-              </h2>
-              <button
-                onClick={resetCalculator}
-                className="px-6 py-2 bg-gradient-to-r from-cyan-400 to-primary-500 text-white rounded-lg font-semibold hover:from-cyan-500 hover:to-primary-600 transition-all duration-300"
-              >
-                New Calculation
-              </button>
-            </div>
-
-            {/* Results Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-              {calculationType === 'import' && results.type === 'import' && (
-                <>
-                  <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 border-l-4 border-red-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Total Landed Cost</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.totalCost.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">Including all duties and taxes</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 border-l-4 border-red-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Import Duty</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.importDuty.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">{results.dutyRate}% of CIF Value</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 border-l-4 border-red-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">GST Amount</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.gstAmount.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">{results.gstRate}% GST Rate</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-red-50 to-pink-50 rounded-xl p-6 border-l-4 border-red-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">CIF Value</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.cifValue.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">Product + Shipping + Insurance</div>
-                  </div>
-                </>
-              )}
-
-              {calculationType === 'export' && results.type === 'export' && (
-                <>
-                  <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border-l-4 border-green-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Total Export Cost</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.totalCost.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">Including all fees</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border-l-4 border-green-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Export Duty</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.exportDuty.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">{results.dutyRate}% of Product Value</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border-l-4 border-green-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Shipping Cost</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.shippingCost.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">Estimated shipping</div>
-                  </div>
-                  <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6 border-l-4 border-green-500 text-center">
-                    <div className="text-sm text-gray-600 font-medium mb-2">Product Value</div>
-                    <div className="text-3xl font-bold text-gray-900 mb-1">
-                      ₹{results.productValue.toLocaleString('en-IN')}
-                    </div>
-                    <div className="text-xs text-gray-500">Base product value</div>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Breakdown */}
-            <div className="bg-gradient-to-br from-gray-50 to-cyan-50 rounded-xl p-6 mb-8">
-              <h4 className="text-xl font-bold text-gray-900 mb-4">Cost Breakdown</h4>
-              <div className="space-y-3">
-                {calculationType === 'import' && results.type === 'import' && (
-                  <>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Product Value:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.productValue.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Shipping Cost:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.shipping.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Insurance Cost:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.insurance.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">CIF Value:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.cifValue.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Import Duty ({results.dutyRate}%):</span>
-                      <span className="text-gray-900 font-semibold">₹{results.importDuty.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">GST ({results.gstRate}%):</span>
-                      <span className="text-gray-900 font-semibold">₹{results.gstAmount.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 pt-3">
-                      <span className="text-gray-900 font-bold text-lg">Total Cost:</span>
-                      <span className="text-gray-900 font-bold text-lg">₹{results.totalCost.toLocaleString('en-IN')}</span>
-                    </div>
-                  </>
-                )}
-
-                {calculationType === 'export' && results.type === 'export' && (
-                  <>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Product Value:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.productValue.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Export Duty ({results.dutyRate}%):</span>
-                      <span className="text-gray-900 font-semibold">₹{results.exportDuty.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Shipping Cost:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.shippingCost.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 border-b border-gray-200">
-                      <span className="text-gray-700 font-medium">Documentation Fees:</span>
-                      <span className="text-gray-900 font-semibold">₹{results.documentationFees.toLocaleString('en-IN')}</span>
-                    </div>
-                    <div className="flex justify-between py-2 pt-3">
-                      <span className="text-gray-900 font-bold text-lg">Total Export Cost:</span>
-                      <span className="text-gray-900 font-bold text-lg">₹{results.totalCost.toLocaleString('en-IN')}</span>
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* Comparison Chart */}
-            <div className="bg-white rounded-xl p-6 border-2 border-cyan-100">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Cost Comparison</h3>
-              <div className="space-y-4">
-                <div>
-                  <div className="flex items-center mb-2">
-                    <span className="w-48 font-semibold text-gray-700">Product Value</span>
-                    <div className="flex-1 h-8 bg-gray-200 rounded-full overflow-hidden relative">
-                      <div
-                        className="h-full bg-gradient-to-r from-cyan-400 to-primary-500 rounded-full transition-all duration-800"
-                        style={{
-                          width: `${Math.min((results.productValue / results.totalCost) * 100, 100)}%`,
-                        }}
-                      ></div>
-                      <span className="absolute right-4 top-1/2 transform -translate-y-1/2 font-semibold text-gray-900">
-                        ₹{results.productValue.toLocaleString('en-IN')}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div className="flex items-center mb-2">
-                    <span className="w-48 font-semibold text-gray-700">
-                      Total {calculationType === 'import' ? 'Landed' : 'Export'} Cost
-                    </span>
-                    <div className="flex-1 h-8 bg-gray-200 rounded-full overflow-hidden relative">
-                      <div
-                        className={`h-full rounded-full transition-all duration-800 ${
-                          calculationType === 'import'
-                            ? 'bg-gradient-to-r from-red-500 to-pink-600'
-                            : 'bg-gradient-to-r from-green-500 to-teal-600'
-                        }`}
-                        style={{
-                          width: `${Math.min((results.totalCost / results.totalCost) * 100, 100)}%`,
-                        }}
-                      ></div>
-                      <span className="absolute right-4 top-1/2 transform -translate-y-1/2 font-semibold text-gray-900">
-                        ₹{results.totalCost.toLocaleString('en-IN')}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </main>
   )

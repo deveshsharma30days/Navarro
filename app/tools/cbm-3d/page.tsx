@@ -601,35 +601,70 @@ export default function CBM3DCalculator() {
           margin: 0,
           fontFamily:
             "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif",
-          background: 'linear-gradient(to bottom, #e0f2fe, #ffffff)',
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
+          backgroundSize: '400% 400%',
+          animation: 'gradient 15s ease infinite',
           color: '#1e293b',
           minHeight: '100vh',
-          padding: '48px 24px',
+          padding: '32px 20px',
+          position: 'relative',
         }}
       >
-        <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: '24px' }}>
+        <style jsx>{`
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}</style>
+        <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 480px', gap: '28px' }}>
             {/* Left Panel: Calculator */}
             <div
               style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '32px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                border: '2px solid #a5f3fc',
+                background: 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '20px',
+                padding: '36px',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+                border: '3px solid rgba(255, 255, 255, 0.3)',
               }}
             >
-              <h1
-                style={{
-                  margin: '0 0 24px 0',
-                  fontSize: '28px',
-                  fontWeight: 800,
-                  color: '#0f172a',
-                }}
-              >
-                CBM Calculator —{' '}
-                <span style={{ color: '#06b6d4' }}>Single Shipping Container</span>
-              </h1>
+              <div style={{ marginBottom: '28px', paddingBottom: '20px', borderBottom: '3px solid #e0e7ff' }}>
+                <div style={{ 
+                  display: 'inline-block', 
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  color: 'white',
+                  padding: '6px 16px',
+                  borderRadius: '20px',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  letterSpacing: '1px',
+                  marginBottom: '12px'
+                }}>
+                  3D VISUALIZATION
+                </div>
+                <h1
+                  style={{
+                    margin: '0',
+                    fontSize: '32px',
+                    fontWeight: 900,
+                    color: '#1e293b',
+                    lineHeight: 1.2,
+                  }}
+                >
+                  CBM Calculator{' '}
+                  <span style={{ 
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}>3D Edition</span>
+                </h1>
+                <p style={{ marginTop: '8px', color: '#64748b', fontSize: '15px', fontWeight: 500 }}>
+                  Visualize your shipment in real-time 3D
+                </p>
+              </div>
 
               {/* Controls */}
               <div
@@ -1143,32 +1178,59 @@ export default function CBM3DCalculator() {
             {/* Right Panel: 3D Viewer */}
             <div
               style={{
-                background: 'white',
-                borderRadius: '16px',
-                padding: '32px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-                border: '2px solid #a5f3fc',
+                background: 'rgba(255, 255, 255, 0.95)',
+                backdropFilter: 'blur(10px)',
+                borderRadius: '20px',
+                padding: '28px',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.15)',
+                border: '3px solid rgba(255, 255, 255, 0.3)',
+                position: 'sticky',
+                top: '20px',
+                alignSelf: 'start',
               }}
             >
-              <h2
-                style={{
-                  margin: '0 0 20px 0',
-                  fontSize: '20px',
-                  fontWeight: 800,
-                  color: '#0f172a',
-                }}
-              >
-                3D Container Viewer
-              </h2>
+              <div style={{ 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'space-between',
+                marginBottom: '20px',
+                paddingBottom: '16px',
+                borderBottom: '2px solid #e0e7ff'
+              }}>
+                <h2
+                  style={{
+                    margin: 0,
+                    fontSize: '22px',
+                    fontWeight: 900,
+                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  🎯 3D Viewer
+                </h2>
+                <div style={{
+                  background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                  color: 'white',
+                  padding: '4px 12px',
+                  borderRadius: '12px',
+                  fontSize: '11px',
+                  fontWeight: 700,
+                }}>
+                  LIVE
+                </div>
+              </div>
               <div
                 ref={viewerRef}
                 style={{
                   width: '100%',
-                  height: '640px',
-                  borderRadius: '12px',
-                  background: '#0b1220',
+                  height: '680px',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(135deg, #0b1220 0%, #1a1f3a 100%)',
                   overflow: 'hidden',
-                  boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.3)',
+                  boxShadow: 'inset 0 4px 20px rgba(0,0,0,0.5), 0 8px 32px rgba(102, 126, 234, 0.3)',
+                  border: '2px solid rgba(102, 126, 234, 0.2)',
                 }}
               />
               <div
