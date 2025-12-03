@@ -1,6 +1,11 @@
+'use client'
+
+import Link from 'next/link'
+
 export default function Blogs() {
   const blogs = [
     {
+      slug: 'understanding-international-shipping-regulations',
       title: 'Understanding International Shipping Regulations',
       excerpt: 'A comprehensive guide to navigating international shipping regulations and compliance requirements for global trade.',
       category: 'Shipping Basics',
@@ -8,6 +13,7 @@ export default function Blogs() {
       readTime: '5 min read',
     },
     {
+      slug: 'how-to-calculate-shipping-costs-accurately',
       title: 'How to Calculate Shipping Costs Accurately',
       excerpt: 'Learn the essential factors that affect shipping costs and how to calculate them accurately for your business.',
       category: 'Cost Optimization',
@@ -15,6 +21,7 @@ export default function Blogs() {
       readTime: '7 min read',
     },
     {
+      slug: 'customs-documentation-complete-checklist',
       title: 'Customs Documentation: Complete Checklist',
       excerpt: 'Everything you need to know about customs documentation, including required forms and filing procedures.',
       category: 'International Shipping',
@@ -22,6 +29,7 @@ export default function Blogs() {
       readTime: '6 min read',
     },
     {
+      slug: 'hs-code-classification-made-simple',
       title: 'HS Code Classification Made Simple',
       excerpt: 'Master the Harmonized System code classification process to ensure accurate product categorization.',
       category: 'International Shipping',
@@ -29,6 +37,7 @@ export default function Blogs() {
       readTime: '8 min read',
     },
     {
+      slug: 'packaging-best-practices-for-safe-shipping',
       title: 'Packaging Best Practices for Safe Shipping',
       excerpt: 'Essential packaging techniques and materials to protect your products during transit and reduce damage claims.',
       category: 'Shipping Basics',
@@ -36,6 +45,7 @@ export default function Blogs() {
       readTime: '4 min read',
     },
     {
+      slug: 'reducing-shipping-costs-10-proven-strategies',
       title: 'Reducing Shipping Costs: 10 Proven Strategies',
       excerpt: 'Discover practical strategies to reduce your shipping costs without compromising on service quality.',
       category: 'Cost Optimization',
@@ -81,12 +91,12 @@ export default function Blogs() {
                 <span>{blog.readTime}</span>
               </div>
               <div className="mt-6">
-                <button className="text-cyan-400 hover:text-cyan-500 font-semibold flex items-center group-hover:underline">
+                <Link href={`/blogs/${blog.slug}`} className="text-cyan-400 hover:text-cyan-500 font-semibold flex items-center group-hover:underline">
                   Read More
                   <svg className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </article>
           ))}
