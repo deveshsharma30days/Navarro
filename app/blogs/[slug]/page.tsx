@@ -162,8 +162,39 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <main className="min-h-screen py-20 bg-gradient-to-b from-primary-50 to-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <main className="min-h-screen py-20 bg-gradient-to-br from-primary-50 via-cyan-50 to-blue-50 relative overflow-hidden">
+      {/* Animated Wave Background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <svg className="absolute top-0 left-0 w-full h-full opacity-20" viewBox="0 0 1200 300" preserveAspectRatio="none">
+          <path d="M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z" fill="url(#waveGradient3)">
+            <animate attributeName="d" dur="20s" repeatCount="indefinite" values="M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z;M0,150 Q300,200 600,150 T1200,150 L1200,300 L0,300 Z;M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z" />
+          </path>
+          <defs>
+            <linearGradient id="waveGradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#22d3ee" />
+              <stop offset="50%" stopColor="#0ea5e9" />
+              <stop offset="100%" stopColor="#3b82f6" />
+            </linearGradient>
+          </defs>
+        </svg>
+        <svg className="absolute bottom-0 left-0 w-full h-full opacity-15" viewBox="0 0 1200 300" preserveAspectRatio="none" style={{ transform: 'scaleX(-1)' }}>
+          <path d="M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z" fill="url(#waveGradient4)">
+            <animate attributeName="d" dur="25s" repeatCount="indefinite" values="M0,150 Q300,200 600,150 T1200,150 L1200,300 L0,300 Z;M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z;M0,150 Q300,200 600,150 T1200,150 L1200,300 L0,300 Z" />
+          </path>
+          <defs>
+            <linearGradient id="waveGradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#3b82f6" />
+              <stop offset="50%" stopColor="#0ea5e9" />
+              <stop offset="100%" stopColor="#22d3ee" />
+            </linearGradient>
+          </defs>
+        </svg>
+        {/* Floating circles */}
+        <div className="absolute top-20 right-10 w-64 h-64 bg-cyan-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob"></div>
+        <div className="absolute top-40 left-10 w-64 h-64 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-2000"></div>
+        <div className="absolute bottom-20 right-1/3 w-64 h-64 bg-primary-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-blob animation-delay-4000"></div>
+      </div>
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Back Button */}
         <Link
           href="/blogs"
